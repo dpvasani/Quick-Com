@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import { errorMiddleware } from '../../../packages/error/error.middleware';
+import cookieParser from 'cookie-parser';
 
 
 
@@ -25,3 +27,8 @@ const server = app.listen(port, () => {
 server.on('error', (err) => {
     console.error(`Auth Service error: ${err}`);
 });
+
+// Error handling middleware
+app.use(errorMiddleware);
+app.use(express.json());
+app.use(cookieParser());
