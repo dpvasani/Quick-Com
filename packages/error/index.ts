@@ -68,4 +68,15 @@ export class BadRequestError extends AppError {
     }
 }
 
-export class AuthError
+export class AuthError extends AppError {
+    constructor(message: string, details?: any) {
+        super(message, 401, true, details);
+    }
+}
+
+// Additional custom error classes can be added here as needed
+export class CustomError extends AppError {
+    constructor(message: string, statusCode: number, details?: any) {
+        super(message, statusCode, true, details);
+    }
+}
